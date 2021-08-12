@@ -1,0 +1,52 @@
+.btn-group button {
+  cursor: pointer; /* Pointer/hand icon */
+  float: right; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+  border-left: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.texto {
+   word-break: break-word;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px; /* fallback */
+   max-height: 32px; /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.bgs{
+  background-image: url('dist/img/dfcamit.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
+.error {
+  width: 95%; 
+  margin: 0px auto;
+  line-height: 20px;
+  padding: 0; 
+  border: 1px solid red; 
+  color: white; 
+  background: red; 
+  border-radius: 5px; 
+  text-align: left;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 12px;
+
+}
+
+p{
+   margin: 0 !important;
+}
