@@ -135,14 +135,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="data6.php" class="nav-link">
-              <i class="nav-icon fas fa-comments"></i>
-              <p>
-                Request Accounts
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="#modal" class="nav-link" data-target="#modal" data-toggle="modal">
               <i class="nav-icon fas fa-times text-light"></i>
               <p>

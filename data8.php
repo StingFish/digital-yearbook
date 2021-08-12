@@ -88,7 +88,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="job.php" class="nav-link">
+            <a href="job1.php" class="nav-link">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Job Hirings
@@ -104,7 +104,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="data.php" class="nav-link">
+            <a href="data7.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Administrative Officers
@@ -112,7 +112,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="data2.php" class="nav-link active">
+            <a href="data8.php" class="nav-link active">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Academic Affairs
@@ -120,7 +120,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="data3.php" class="nav-link">
+            <a href="data9.php" class="nav-link">
               <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
                 Graduates
@@ -128,26 +128,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="data4.php" class="nav-link">
+            <a href="data0.php" class="nav-link">
               <i class="nav-icon fas fa-image"></i>
               <p>
                 Milestones & Activities
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="data5.php" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Registered Accounts
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="data6.php" class="nav-link">
-              <i class="nav-icon fas fa-comments"></i>
-              <p>
-                Request Accounts
               </p>
             </a>
           </li>
