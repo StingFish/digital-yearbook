@@ -67,7 +67,7 @@
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
       <img src="dist/img/logo-removebg.png" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin Panel</span>
+      <span class="brand-text font-weight-light">Registrar Panel</span>
     </a>
 
     <!-- Sidebar -->
@@ -124,7 +124,7 @@
               <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
                 Graduates
-              </p>
+              </p>  
             </a>
           </li>
           <li class="nav-item">

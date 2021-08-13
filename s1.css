@@ -32,6 +32,13 @@
   background-size: cover;
 }
 
+.bgs2{
+  background-image: url('dist/img/quad.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
 .error {
   width: 95%; 
   margin: 0px auto;

@@ -253,7 +253,7 @@
           echo "</tbody>";
           echo "</table>";
           echo "<br>";
-        mysqli_close($db);
+        
         ?>
                   
                   </tbody>
@@ -271,7 +271,10 @@
     </section>
     <!-- /.content -->
   </div>
-  <div class="modal fade" id="modal">
+<?php
+
+?>
+<div class="modal fade" id="modal">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header bg-gradient-primary">
