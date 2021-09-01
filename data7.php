@@ -173,7 +173,7 @@
       $db = mysqli_connect('localhost', 'root', '', 'yearbook');
       $year = date("Y");
 
-        if(isset($_POST['search']) or isset($_POST['nam'])){
+ if(isset($_POST['search']) or isset($_POST['nam'])){
         $searchKey=$_POST['search'];
         $name= $_POST['nam'];
 
@@ -187,6 +187,10 @@
       }
         $result = mysqli_query($db,$sql);
         $rows = mysqli_num_rows($result);
+
+      if(isset($_POST['adds'])){
+    echo "<script>window.location='data7e.php';</script>";
+}
         ?>
     <!-- Main content -->
     <section class="content">
@@ -204,14 +208,17 @@
                   <span class="input-group-append">
                     <button type="button1" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
                   </span>
-                  <hr>
-                
+                </div>
+              <div class="input-group mb-3" style="margin: 5px;">
                   <input type="number" name="search" placeholder="Sort year by..." min="2018" max="<?php echo $year;?>" class="rounded-0" value="<?php echo $searchKey; ?>" style="width:150px;border:1px solid;">
                   <span class="input-group-append">
-                    <button type="button1" class="btn btn-info btn-flat" style="margin-right: 10px;">Go!</button>
+                    <button type="button1" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
                   </span>
                 </div>
-               </form>
+               <div> 
+              <button type="submit" class="btn btn-block btn-primary btn-sm" name="adds" style="width:60px; margin: 5px;"><i class="fa fa-plus">&nbsp;Add</i></button>
+            </div>
+               </form> 
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
@@ -223,6 +230,7 @@
                     <th>Middle Initial</th>
                     <th>Position</th>
                     <th>Year</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tfoot>
@@ -233,6 +241,7 @@
                     <th>Middle Initial</th>
                     <th>Position</th>
                     <th>Year</th>
+                    <th>Action</th>
                   </tr>
                   </tfoot>
                   <tbody>
@@ -251,6 +260,14 @@
           echo "<td>" . $row['mname'] . "</td>";
           echo "<td>" . $row['position'] . "</td>";
           echo "<td>" . $row['year'] . "</td>";
+          echo "<td align='center'>
+                  <button class='.btn-sm bg-success' style='border:1px solid;width:30px;'>
+                <a class='delbtn' style='text-decoration:none; color:white;' href ='af2.php?edit2=".$row['id']."'><i class='fa fa-edit'></i></a>
+                  </button>
+                  <button class='.btn-sm bg-danger' style='border:1px solid;width:30px;'>
+                <a class='delbtn' style='text-decoration:none; color:white;' href='af2.php?email2=".$row['id']."'><i class='fa fa-times'></i></a>
+                  </button>
+                </td>";
           echo "</tr>";
         }
       }
@@ -304,6 +321,7 @@
         <!-- /.modal-dialog -->
       </div>
 
+      
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -369,3 +387,8 @@
 </script>
 </body>
 </html>
+<?php 
+  if(isset($_POST['butts'])) {
+    header("Location: data8.php");
+  }
+ ?>

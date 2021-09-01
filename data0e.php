@@ -3,17 +3,18 @@
 
     if(!isset($_SESSION['User']))
     {
-      echo "<script>window.location='LC.php';</script>";
-    }
+      echo "<script>window.location='select.php';</script>";
+    }//eto yung bookmark
     isset($_SESSION['User']);
+
+    $years=date("Y");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Academic Affairs</title>
-  <link rel="icon" type="text/css" href="dist/img/logo-removebg.png">
+  <title>Administrative Officers</title>
   <link rel="stylesheet" type="text/css" href="s1.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -112,7 +113,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="data8.php" class="nav-link active">
+            <a href="data8.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Academic Affairs
@@ -120,7 +121,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="data9.php" class="nav-link">
+            <a href="data9.php" class="nav-link active">
               <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
                 Graduates
@@ -162,125 +163,62 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item active">Academic Affairs</li>
+              <li class="breadcrumb-item active">Graduates</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-    <?php
-      //just add form tag here to use the search function
-      $db = mysqli_connect('localhost', 'root', '', 'yearbook');
-      $year = date("Y");
-
-        if(isset($_POST['search'])){
-        $searchKey=$_POST['search'];
-        $name= $_POST['nam'];
-
-        $sql = "SELECT * from tab3 where lname LIKE '%$name%' AND year LIKE '%$searchKey%' ORDER BY lname, year";
-        $result = mysqli_query($db,$sql);
-        $rows = mysqli_num_rows($result);
-      }else{
-        $sql = "SELECT * from tab3 ORDER BY lname, year";
-        $searchKey="";
-        $name="";
-      }
-        $result = mysqli_query($db,$sql);
-        $rows = mysqli_num_rows($result);
-
-        if(isset($_POST['adds'])){
-    echo "<script>window.location='data8e.php';</script>";
-}
-        ?>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header bg-gradient-primary">
-                <h3 class="card-title">Academic Affairs</h3>
+              <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add Student</h3>
               </div>
-
-                <form action="" method="post" style="margin: 0 !important;">
-              <div class="input-group mb-3" style="margin: 5px;">
-                  <input type="text" class="rounded-0" name="nam" placeholder="Search last name..." style="width:150px;border:1px solid;" value="<?php echo $name; ?>">
-                  <span class="input-group-append">
-                    <button type="button1" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
-                  </span>
-                </div>
-              <div class="input-group mb-3" style="margin: 5px;">
-                  <input type="number" name="search" placeholder="Sort year by..." min="2018" max="<?php echo $year;?>" class="rounded-0" value="<?php echo $searchKey; ?>" style="width:150px;border:1px solid;">
-                  <span class="input-group-append">
-                    <button type="button1" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
-                  </span>
-                </div>
-                  <div> 
-              <button type="submit" class="btn btn-block btn-primary btn-sm" name="adds" style="width:60px; margin: 5px;"><i class="fa fa-plus">&nbsp;Add</i></button>
-            </div>
-               </form> 
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Middle Initial</th>
-                    <th>Position</th>
-                    <th>Year</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tfoot>
-                  <tr>
-                    <th>Image</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Middle Initial</th>
-                    <th>Position</th>
-                    <th>Year</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
-                  <tbody>
-                  <?php
-                  if (empty($rows)) {
-          echo "<tr>";
-          echo "<td colspan='6'><center>No results found.</center></td>";
-          echo "</tr>";
-          }
-          else{
-          while($row = mysqli_fetch_array($result)){
-          echo "<tr>";
-          echo "<td><center>".'<img class="image-official" src="data:image/jpeg;base64,'.base64_encode($row['image1'] ).'" style="height:80px;"/>'."</center></td>";
-          echo "<td>" . $row['lname'] . "</td>";
-          echo "<td>" . $row['fname'] . "</td>";
-          echo "<td>" . $row['mname'] . "</td>";
-          echo "<td>" . $row['position'] . "</td>";
-          echo "<td>" . $row['year'] . "</td>";
-          echo "<td align='center'>
-                  <button class='.btn-sm bg-success' style='border:1px solid;width:30px;'>
-                <a class='delbtn' style='text-decoration:none; color:white;' href ='af2.php?edit3=".$row['id']."'><i class='fa fa-edit'></i></a>
-                  </button>
-                  <button class='.btn-sm bg-danger' style='border:1px solid;width:30px;'>
-                <a class='delbtn' style='text-decoration:none; color:white;' href='af2.php?email3=".$row['id']."'><i class='fa fa-times'></i></a>
-                  </button>
-                </td>";
-          echo "</tr>";
-        }
-      }
-          echo "</tbody>";
-          echo "</table>";
-          echo "<br>";
-        mysqli_close($db);
-        ?>
-                  
-                  </tbody>
-                </table>
-              </div>
+              <!-- form start -->
+              <form action="" method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="f1" class="form-control" id="exampleInputFile" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="p1">Last Name</label>
+                    <input type="text" name="Lname" class="form-control" id="p1" placeholder="Last Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="p1">First Name</label>
+                    <input type="text" name="Fname" class="form-control" id="p1" placeholder="First Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="p1">Middle Initial</label>
+                    <input type="text" name="Mname" class="form-control" id="p1" placeholder="Middle Initial" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="quo">Quotes</label>
+                    <textarea class="form-control" style="resize:none;" id="quo" rows="3" name="Quot" placeholder="Quotes here.." required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="p1">Batch Year</label>
+                    <input type="number" name="year" min="2018" max="<?php echo $years; ?>" class="form-control" id="p1" placeholder="Batch Year" required>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" name="submit1" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -322,6 +260,7 @@
         <!-- /.modal-dialog -->
       </div>
 
+      
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -343,15 +282,6 @@
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- SweetAlert2 -->
@@ -368,22 +298,35 @@
       timer: 3000
     });
 </script>
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
 </body>
 </html>
+
+<?php
+      $db=mysqli_connect('localhost','root','','yearbook');
+
+      if(isset($_POST["submit1"])){
+         $image = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
+         $firstName = mysqli_real_escape_string($db, $_POST['Fname']);
+         $midName = mysqli_real_escape_string($db, $_POST['Mname']);
+         $lastName = mysqli_real_escape_string($db, $_POST['Lname']);
+         $course = mysqli_real_escape_string($db, $_POST['Quot']);
+         $year = mysqli_real_escape_string($db, $_POST['year']);
+
+         // first check the database to make sure
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM shs WHERE fname='$firstName' AND mname='$midName' AND lname='$lastName' AND quotes='$course' AND year='$year' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+
+  if ($user) { // if user exists
+    if ($user['fname'] === $firstName AND $user['mname'] === $midName AND $user['lname'] === $lastName AND $user['quotes'] === $course AND $user['year'] === $year) {
+       echo "<script>alert('Member detail already exists.');window.location='data9e.php';</script>";
+    }
+  }
+  else{
+         $user_check_query = "INSERT INTO shs (image, fname, mname, lname, quotes, year) VALUES ('$image', '$firstName', '$midName', '$lastName', '$course', '$year')";
+         $result = mysqli_query($db, $user_check_query);
+         echo "<script>window.location='data9.php';alert('Added Successfully!');</script>";
+       }
+      }
+?>

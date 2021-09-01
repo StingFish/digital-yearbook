@@ -259,7 +259,7 @@
                   <?php
                   if (empty($rows)) {
           echo "<tr>";
-          echo "<td colspan='6'><center>No results found.</center></td>";
+          echo "<td colspan='8'><center>No results found.</center></td>";
           echo "</tr>";
           }
           else{

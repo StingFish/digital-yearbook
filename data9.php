@@ -188,6 +188,10 @@
       }
         $result = mysqli_query($db,$sql);
         $rows = mysqli_num_rows($result);
+
+        if(isset($_POST['adds'])){
+    echo "<script>window.location='data9e.php';</script>";
+}
         ?>
     <!-- Main content -->
     <section class="content">
@@ -212,6 +216,9 @@
                     <button type="button1" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
                   </span>
                 </div>
+                <div> 
+              <button type="submit" class="btn btn-block btn-primary btn-sm" name="adds" style="width:60px; margin: 5px;"><i class="fa fa-plus">&nbsp;Add</i></button>
+            </div>
                </form>
               <!-- /.card-header -->
               <div class="card-body">
@@ -224,6 +231,7 @@
                     <th>Middle Initial</th>
                     <th><center>Quotes</center></th>
                     <th>Year</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tfoot>
@@ -234,6 +242,7 @@
                     <th>Middle Initial</th>
                     <th>Quotes</th>
                     <th>Year</th>
+                    <th>Action</th>
                   </tr>
                   </tfoot>
                   <tbody>
@@ -252,6 +261,14 @@
           echo "<td>" . $row['mname'] . "</td>";
           echo "<td>" . $row['quotes'] . "</td>";
           echo "<td>" . $row['year'] . "</td>";
+          echo "<td align='center'>
+                  <button class='.btn-sm bg-success' style='border:1px solid;width:30px;'>
+                <a class='delbtn' style='text-decoration:none; color:white;' href ='af2.php?edit8=".$row['id']."'><i class='fa fa-edit'></i></a>
+                  </button>
+                  <button class='.btn-sm bg-danger' style='border:1px solid;width:30px;'>
+                <a class='delbtn' style='text-decoration:none; color:white;' href='af2.php?email8=".$row['id']."'><i class='fa fa-times'></i></a>
+                  </button>
+                </td>";
           echo "</tr>";
         }
       }

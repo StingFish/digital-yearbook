@@ -1,4 +1,4 @@
-<?php
+  <?php
     session_start();
 
     if(!isset($_SESSION['User2']))
@@ -38,6 +38,9 @@
   <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" type="text/css" href="s2.css">
+
+  <link rel="stylesheet" href="plugins/ekko-lightbox/ekko-lightbox.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -240,7 +243,39 @@
     -The Developers 
     </div>
     </div>
-            
+    <!-- /.pang carousel dito -->
+    <div class="row">
+          <div class="col-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-white">Hello Admin!</h6>
+              </div>
+              <div class="card-body">
+                <div class="row">
+<?php
+  $db=mysqli_connect('localhost','root','','yearbook');
+  $goo= 2018;
+         $user_check_query = "SELECT * FROM shs WHERE year='$goo' ORDER BY lname";
+         $result = mysqli_query($db, $user_check_query);
+
+         while ($row = mysqli_fetch_array($result)){
+                  echo "<div class='col-sm-2'>
+                    <a href='LAMAN NENTO' data-toggle='lightbox' data-title='".$row['lname']."' data-gallery='gallery'>";
+                  echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'" class="img-fluid mb-2" alt="Avatar" />';
+                      echo "<center><h6 class='m-0 font-weight-bold text-dark' style='decoration:none;color:black'>".$row['lname'].", ".$row['fname']." ".$row['mname']."</h6></center>
+                      <div>
+                        <center><medium class='text-muted font-italic' style='text-content:justify;'>&#10075;&#10075;&nbsp;".$row['quotes']."&#10076;&#10076;</medium></center><br><br>
+                        </div>
+                    </a>
+                  </div>";
+                }?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- /.pang carousel dito -->      
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -291,5 +326,24 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
+
+<script src="plugins/filterizr/jquery.filterizr.min.js"></script>
+<script src="plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+<script>
+  $(function () {
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
+
+    $('.filter-container').filterizr({gutterPixels: 3});
+    $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+    });
+  })
+</script>
 </body>
 </html>

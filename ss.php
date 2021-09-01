@@ -18,9 +18,10 @@ if(isset($_POST['save2'])){
 	$lname = $_POST['lastname'];
 	$password = $_POST['position'];
 	$year = $_POST['year'];
+	$image = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
 
-	$mysqli->query("UPDATE tab2 SET fname='$fname', mname='$mname', lname='$lname', position='$password', year='$year' WHERE id='$id'") or die($mysqli->error());
-	echo "<script>alert('Edit Successfully!');window.location='tabs2.php';</script>";
+	$mysqli->query("UPDATE tab2 SET image1='$image', fname='$fname', mname='$mname', lname='$lname', position='$password', year='$year' WHERE id='$id'") or die($mysqli->error());
+	echo "<script>alert('Edit Successfully!');window.location='data7.php';</script>";
 }
 
 if(isset($_POST['save3'])){
@@ -35,54 +36,8 @@ if(isset($_POST['save3'])){
 	echo "<script>alert('Edit Successfully!');window.location='tabs3.php';</script>";
 }
 
-if(isset($_POST['save4'])){
-	$id= $_POST['id'];
-	$fname = $_POST['firstname'];
-	$mname = $_POST['middlename'];
-	$lname = $_POST['lastname'];
-	$password = $_POST['position'];
-	$year = $_POST['year'];
 
-	$mysqli->query("UPDATE tab4 SET id='$id', fname='$fname', mname='$mname', lname='$lname', position='$password', year='$year' WHERE id='$id'") or die($mysqli->error());
-	echo "<script>alert('Edit Successfully!');window.location='tabs4.php';</script>";
-}
 
-if(isset($_POST['save5'])){
-	$id= $_POST['id'];
-	$fname = $_POST['firstname'];
-	$mname = $_POST['middlename'];
-	$lname = $_POST['lastname'];
-	$password = $_POST['position'];
-	$year = $_POST['year'];
-
-	$mysqli->query("UPDATE tab5 SET id='$id', fname='$fname', mname='$mname', lname='$lname', position='$password', year='$year' WHERE id='$id'") or die($mysqli->error());
-	echo "<script>alert('Edit Successfully!');window.location='tabs5.php';</script>";
-}
-
-if(isset($_POST['save6'])){
-	$id= $_POST['id'];
-	$fname = $_POST['firstname'];
-	$mname = $_POST['middlename'];
-	$lname = $_POST['lastname'];
-	$password = $_POST['position'];
-	$year = $_POST['year'];
-
-	$mysqli->query("UPDATE tab6 SET id='$id', fname='$fname', mname='$mname', lname='$lname', position='$password', year='$year' WHERE id='$id'") or die($mysqli->error());
-	echo "<script>alert('Edit Successfully!');window.location='tabs6.php';</script>";
-}
-
-if(isset($_POST['save7'])){
-	$id= $_POST['id'];
-	$fname = $_POST['firstname'];
-	$mname = $_POST['middlename'];
-	$lname = $_POST['lastname'];
-	$password = $_POST['position'];
-	$year = $_POST['year'];
-
-	$mysqli->query("UPDATE tab7 SET id='$id', fname='$fname', mname='$mname', lname='$lname', position='$password', year='$year' WHERE id='$id'") or die($mysqli->error());
-	echo "<script>alert('Edit Successfully!');window.location='tabs7.php';</script>";
-}
-/*
 if(isset($_POST['save8'])){
 	$id= $_POST['id'];
 	$fname = $_POST['firstname'];
@@ -90,10 +45,10 @@ if(isset($_POST['save8'])){
 	$lname = $_POST['lastname'];
 	$year = $_POST['year'];
 
-	$mysqli->query("UPDATE tab8 SET id='$id', fname='$fname', mname='$mname', lname='$lname', year='$year' WHERE id='$id'") or die($mysqli->error());
-	echo "<script>alert('Edit Successfully!');window.location='tabs8.php';</script>";
+	$mysqli->query("UPDATE shs SET id='$id', fname='$fname', mname='$mname', lname='$lname', year='$year' WHERE id='$id'") or die($mysqli->error());
+	echo "<script>alert('Edit Successfully!');window.location='data9.php';</script>";
 }
-
+/*
 if(isset($_POST['save9'])){
 	$id= $_POST['id'];
 	$fname = $_POST['firstname'];

@@ -196,7 +196,7 @@ myInput.onkeyup = function() {
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="number" class="form-control" placeholder="Contact No."oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeypress="return isNumberKey(event)" maxlength="9" value="<?php echo $contact; ?>">
+          <input type="number" class="form-control" name="conn" placeholder="Contact No."oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeypress="return isNumberKey(event)" maxlength="11" value="<?php echo $contact; ?>">
 
           <div class="input-group-append">
             <div class="input-group-text">
@@ -205,7 +205,7 @@ myInput.onkeyup = function() {
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="number" class="form-control" placeholder="Batch Year" min="2018" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeypress="return isNumberKey(event)" maxlength="4" value="<?php echo $contacts;?>">
+          <input type="number" name="year" class="form-control" placeholder="Batch Year" min="2018" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeypress="return isNumberKey(event)" maxlength="4" value="<?php echo $contacts;?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-graduation-cap"></span>

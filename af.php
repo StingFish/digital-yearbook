@@ -32,7 +32,6 @@ if(isset($_GET['email'])){
   header("Location: data5.php");
 }
 
-i
 
 #edit registrar account
 if(isset($_GET['editan'])){
